@@ -13,4 +13,18 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require_tree 
+
+$(function(){
+  var slideW = $('#slides').width();
+  $('#spinner').click(function( e ){
+    e.preventDefault();
+    $('#slides').animate({scrollLeft: slideW }, 600);
+  });
+  $('#spinner2').click(function( e ){
+    e.preventDefault();
+    $('#slides').animate({scrollRight: slideW }, 600);
+  });
+
+});
+

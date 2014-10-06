@@ -14,17 +14,21 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree 
+$(document).ready(function() {
+	$('.box').click(function() {
 
-$(function(){
-  var slideW = $('#slides').width();
-  $('#spinner').click(function( e ){
-    e.preventDefault();
-    $('#slides').animate({scrollLeft: slideW }, 600);
-  });
-  $('#spinner2').click(function( e ){
-    e.preventDefault();
-    $('#slides').animate({scrollRight: slideW }, 600);
-  });
+	    $(this).animate({
+	        left: '-100%'
+	    }, 500, function() {
+	        $(this).css('left', '150%');
+	        $(this).appendTo('#slides');
+	    });
 
+	    $(this).next().animate({
+	        left: '0%'
+	    }, 500);
+	});
 });
+
+
 

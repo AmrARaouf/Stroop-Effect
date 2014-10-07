@@ -15,16 +15,15 @@
 //= require turbolinks
 //= require_tree 
 $(document).ready(function() {
-	$('.box').click(function() {
+	$('.spinner').click(function() {
 
-	    $(this).animate({
+	    $(this).parent().parent().parent().parent().parent().animate({
 	        left: '-100%'
 	    }, 500, function() {
-	        $(this).css('left', '150%');
-	        $(this).appendTo('#slides');
+	        $(this).parent().parent().parent().parent().parent().css('left', '150%');
 	    });
 
-	    $(this).next().animate({
+	    $(this).parent().parent().parent().parent().parent().next().animate({
 	        left: '0%'
 	    }, 500);
 	});

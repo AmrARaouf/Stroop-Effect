@@ -27,6 +27,16 @@ $(document).ready(function() {
 	        left: '0%'
 	    }, 500);
 	});
+
+	$(".start_timer").click(function() {
+		setTimeout(function() {
+			$("#countdown").html("2");
+		},1000);
+		setTimeout(function() {
+			$("#countdown").html("1");
+		},2000);
+		
+	});
 });
 
 

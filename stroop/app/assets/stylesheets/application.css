@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6, p {
     margin: 0px;
     padding: 0px;
     width: 940px;
-    height:500px;
+    height:600px;
     overflow: hidden;  
 }
 
@@ -43,4 +43,19 @@ h1, h2, h3, h4, h5, h6, p {
 
 #box1 {
     left: 0%;
+}
+
+.middle {
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.center {
+  text-align: center;
+}
+
+.xlarge {
+  font-size: 100px;
+  margin-top: 50px;
 }

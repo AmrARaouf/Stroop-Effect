@@ -35,9 +35,52 @@ $(document).ready(function() {
 		setTimeout(function() {
 			$("#countdown").html("1");
 		},2000);
-		
+		setTimeout(function() {
+			$("#middle").html(
+				'<div id = "text">' +
+      			'<h1 class = "main" id="colourName">Testing</h1>' +
+      			'</div>'+
+      			'<div class = "tablecloth">'+
+        		'<div class = "table">'+
+        		'<div id = "tr1" class = "tr"></div>'+
+	            '<div id = "tr2" class = "tr"></div>'+
+	            '<div id = "tr3" class = "tr"></div>'+
+	            '<div id = "tr4" class = "tr"></div>'+
+	            '<div id = "tr5" class = "tr"></div>'+
+	            '<div id = "tr6" class = "tr"></div>'+
+	            '<div id = "tr7" class = "tr"></div>'+
+	            '<div id = "tr8" class = "tr"></div>'+
+        		'</div>'+
+        		'</div>');
+			randomizeColour();
+			setColourTable();
+		},3000);
 	});
 });
 
+var codes = ["fd0004", "ffff01", "76ff02", "0000fe", "ac10cf", "ff4103", "593e1e", "010101"]
+var colours = ["red", "yellow", "green", "blue", "purple", "orange", "brown", "black"]
 
+function randomizeColour() {
+	var ctext = document.getElementById('colourName');
+	var idx1 = getRandomInt(0,codes.length - 1);
+	var idx2 = idx1;
+	while (idx2 == idx1) {
+		idx2 = getRandomInt(0,colours.length - 1);
+	}
+	ctext.innerHTML = colours[idx2];
+	ctext.style.color = "#" + codes[idx1];
+}
 
+function setColourTable() {
+	for (var i = 8; i >= 1; i--) {
+		var button = document.getElementById('tr' + i);
+		button.style.background = "#" + codes[i-1];
+		button.addEventListener("click", function() {
+			randomizeColour(); 
+		});
+	}
+}
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}

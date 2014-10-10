@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'admin/results'
+  get 'results', to:  'admin#results'
 
   root 'home#index'
   get 'home/index'

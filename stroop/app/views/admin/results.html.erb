@@ -3,14 +3,18 @@
 	<table class = "table table-striped float" style="width:500px; margin-top:50px;" >
 	<tr>
 		<td><b>#</b></td>
-		<td><b>match</b></td>
-		<td><b>mismatch</b></td>
+		<td><b>match time</b></td>
+		<td><b>match correct</b></td>
+		<td><b>mismatch time</b></td>
+		<td><b>mismatch correct</b></td>
 	</tr>
 	<% @results.each do |r| %>
 		<tr>
 		<td> <%= r.id %> </td>
-		<td> <%= r.match %> </td>
-		<td> <%= r.mismatch %> </td>
+		<td> <%= r.match_time %> </td>
+		<td> <%= r.match_correct %> </td>
+		<td> <%= r.mismatch_time %> </td>
+		<td> <%= r.mismatch_correct %> </td>
 		</tr>
 	<% end %>
 	</table>

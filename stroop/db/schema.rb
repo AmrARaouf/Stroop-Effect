@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141005011305) do
+ActiveRecord::Schema.define(version: 20141010115232) do
 
   create_table "results", force: true do |t|
-    t.float    "match"
-    t.float    "mismatch"
+    t.float    "match_time"
+    t.float    "mismatch_time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "match_correct"
+    t.integer  "mismatch_correct"
   end
 
 end

@@ -1,11 +1,17 @@
 var codes = ["fd0004", "ffff01", "76ff02", "0000fe", "ac10cf", "ff4103", "593e1e", "010101"]
 var colours = ["red", "yellow", "green", "blue", "purple", "orange", "brown", "black"]
-var counter = 0;
+var counter_m = 0;
+var counter_mm = 0;
 var timer_timeout_m;
+var timer_timeout_mm;
 var timer_m = 0;
-var correct_answer;
-var incorrect_answers1 = 0;
+var timer_mm = 0;
+var correct_answer_m;
+var correct_answer_mm;
+var incorrect_answers_m = 0;
+var incorrect_answers_mm = 0;
 var initialize = true;
+var match = true;
 
 $(document).ready(function(){
 	$("#count-down").fadeOut(1);
@@ -15,60 +21,119 @@ $(document).ready(function(){
 });
 
 function startExperiment() {
-	startTimer();
-	randomizeColour();
-	setColourTable();
-}
-function randomizeColour(clicked_id) {
-	counter++;
-	if(counter > 25) {
-		stopTimer();
-		alert("Congratulations you got '" + (25 - incorrect_answers1) + "' correct answers and '" + incorrect_answers1 + "' incorrect answers in '" + (timer_m/1000) + "' seconds.");
-		return;
-	}
-	if(initialize) {
-		initialize = false;
+	if(match) {
+		startTimer('match');
+		setColourTable();
 	}
 	else {
-		if(correct_answer != clicked_id) {
-			incorrect_answers1++;
-			console.log(incorrect_answers1);
+		startTimer('mismatch');
+	}
+	randomizeColour();
+}
+function randomizeColour(clicked_id) {
+	if(!match) {
+		counter_mm++;
+		if(counter_mm > 25) {
+			stopTimer('mismatch');
+			alert("Congratulations you got '" + (25 - incorrect_answers_mm) + "' correct answers and '" + incorrect_answers_mm + "' incorrect answers in '" + (timer_mm/1000) + "' seconds.");
+			return;
 		}
+		if(initialize) {
+			initialize = false;
+		}
+		else {
+			if(correct_answer_mm != clicked_id) {
+				incorrect_answers_mm++;
+				console.log(incorrect_answers_mm);
+			}
+		}
+		var ctext = document.getElementById('colourName');
+		var idx1 = getRandomInt(0,codes.length - 1);
+		var idx2 = idx1;
+		while (idx2 == idx1) {
+			idx2 = getRandomInt(0,colours.length - 1);
+		}
+		ctext.innerHTML = colours[idx2];
+		ctext.style.color = "#" + codes[idx1];
+		correct_answer_mm = "tr" + idx1;
 	}
-	var ctext = document.getElementById('colourName');
-	var idx1 = getRandomInt(0,codes.length - 1);
-	var idx2 = idx1;
-	while (idx2 == idx1) {
-		idx2 = getRandomInt(0,colours.length - 1);
+	else {
+		counter_m++;
+		if(counter_m > 25) {
+			stopTimer('match');
+			alert("Congratulations you got '" + (25 - incorrect_answers_m) + "' correct answers and '" + incorrect_answers_m + "' incorrect answers in '" + (timer_m/1000) + "' seconds.");
+			resetExperiment();
+			return;
+		}
+		if(initialize) {
+			initialize = false;
+		}
+		else {
+			if(correct_answer_m != clicked_id) {
+				incorrect_answers_m++;
+				console.log(incorrect_answers_m);
+			}
+		}
+		var ctext = document.getElementById('colourName');
+		var idx1 = getRandomInt(0,codes.length - 1);
+		var idx2 = idx1;
+		while (idx2 == idx1) {
+			idx2 = getRandomInt(0,colours.length - 1);
+		}
+		ctext.innerHTML = colours[idx2];
+		ctext.style.color = "#" + codes[idx2];
+		correct_answer_m = "tr" + idx2;
 	}
-	ctext.innerHTML = colours[idx2];
-	ctext.style.color = "#" + codes[idx1];
-	correct_answer = "tr" + idx1;
 }
 
 function setColourTable() {
-	for (var i = 8; i >= 1; i--) {
-		var button = document.getElementById('tr' + i);
-		button.style.background = "#" + codes[i-1];
+	if(match) {
+		for (var i = 8; i >= 1; i--) {
+			var button = document.getElementById('tr' + i);
+			button.style.background = "#" + codes[i-1];
+		}
+		$(".tr").click(function(){
+			var id = "tr" + (parseInt($(this).attr('id').replace('tr', '')) - 1);
+			randomizeColour(id);
+		});
 	}
-	$(".tr").click(function(){
-		var id = "tr" + (parseInt($(this).attr('id').replace('tr', '')) - 1);
-		randomizeColour(id);
-	});
+	else {
+		for (var i = 8; i >= 1; i--) {
+			var button = document.getElementById('tr' + i);
+			button.style.background = "#" + codes[i-1];
+		}
+		$(".tr").click(function(){
+			var id = "tr" + (parseInt($(this).attr('id').replace('tr', '')) - 1);
+			randomizeColour(id);
+		});
+	}
 }
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function startTimer() {
-	timer_timeout_m = setInterval(function(){
-		timer_m += 100;	
-		console.log(timer_m / 1000);
-	}, 100);
+function startTimer(type) {
+	if(type == 'match') {
+			timer_timeout_m = setInterval(function(){
+			timer_m += 100;	
+			console.log(timer_m / 1000);
+		}, 100);
+	}
+	else {
+		timer_timeout_mm = setInterval(function(){
+			timer_mm += 100;	
+			console.log(timer_mm / 1000);
+		}, 100);
+	}
 }
 
-function stopTimer() {
-	clearInterval(timer_timeout_m);
+function stopTimer(type) {
+	if(type == "match") {
+		clearInterval(timer_timeout_m);
+	}
+	else {
+		clearInterval(timer_timeout_mm);
+	}
 }
 
 function startCountDown() {
@@ -94,4 +159,11 @@ function startCountDown() {
 	setTimeout(function(){
 		startExperiment();
 	}, 3000);
+}
+
+function resetExperiment() {
+	initialize = true;
+	match = false;
+	$("#count-down").text('3');
+	startCountDown();
 }

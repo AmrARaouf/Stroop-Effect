@@ -105,6 +105,7 @@ button {
   height: 50px;
   width: 50px;
   margin: 5px;
+  cursor: pointer;
 }
 
 .margintop {
@@ -119,4 +120,5 @@ button {
   top: 50%;
   margin-top: -150px;
   text-shadow: 14px 1px 57px #000;
+  z-index: 1;
 }

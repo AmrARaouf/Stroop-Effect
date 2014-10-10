@@ -34,7 +34,7 @@ h1, h2, h3, h4, h5, h6, p {
     margin: 0px;
     padding: 0px;
     width: 940px;
-    height:500px;
+    height:600px;
     overflow: hidden;  
 }
 
@@ -73,20 +73,50 @@ button {
     left: 47%;
 }
 
-.tr {
-    float: left;
-    height: 50px;
-    width: 50px;
-    margin: 5px;
-}
-
-.tablecloth {
-    text-align: center;
-}
-
-.table {
-    width:480px;
+.middle {
     position: relative;
     margin-right: auto;
     margin-left: auto;
+}
+
+.center {
+  text-align: center;
+}
+
+.xlarge {
+  font-size: 100px;
+  margin-top: 50px;
+}
+
+.tablecloth {
+  text-align: center;
+}
+
+.table {
+  width:480px;
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 100px;
+}
+
+.tr {
+  float: left;
+  height: 50px;
+  width: 50px;
+  margin: 5px;
+}
+
+.margintop {
+  margin-top: 100px;
+}
+
+#count-down {
+  position: absolute;
+  font-size: 380px;
+  left: 50%;
+  margin-left: -100px;
+  top: 50%;
+  margin-top: -150px;
+  text-shadow: 14px 1px 57px #000;
 }

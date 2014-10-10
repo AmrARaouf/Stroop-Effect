@@ -14,8 +14,13 @@
 *= require_self
 */
 
+body {
+    font-family: 'raleway';
+    margin-top: 40px;
+}
+
 h1, h2, h3, h4, h5, h6, p {
-	font-family: serif;
+	font-family: 'raleway'
 }
 
 .link {
@@ -43,4 +48,45 @@ h1, h2, h3, h4, h5, h6, p {
 
 #box1 {
     left: 0%;
+}
+
+
+h1.main{
+    text-align: center;
+    margin-top: 40px;
+}
+
+h1 {
+    font-size: 75px;
+}
+
+div.main {
+    position: absolute;
+    height: calc(100% - 16px);;
+    width: calc(100% - 16px);
+}
+
+button {
+    height: 30px;
+    position: relative;
+    top: 47%;
+    left: 47%;
+}
+
+.tr {
+    float: left;
+    height: 50px;
+    width: 50px;
+    margin: 5px;
+}
+
+.tablecloth {
+    text-align: center;
+}
+
+.table {
+    width:480px;
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
 }

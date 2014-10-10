@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'results', to:  'admin#results'
-
+  post '/ending', to: 'home#ending'
   root 'home#index'
   get 'home/index'
 

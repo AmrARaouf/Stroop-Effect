@@ -38,6 +38,9 @@ function randomizeColour(clicked_id) {
 		if(counter_mm > 25) {
 			stopTimer('mismatch');
 			alert("Congratulations you got '" + (25 - incorrect_answers_mm) + "' correct answers and '" + incorrect_answers_mm + "' incorrect answers in '" + (timer_mm/1000) + "' seconds.");
+			$("#mismatch_time").val(timer_mm/1000);
+			$("#mismatch_correct").val(25 - incorrect_answers_mm);
+			$("#form").submit();
 			return;
 		}
 		if(initialize) {
@@ -68,6 +71,8 @@ function randomizeColour(clicked_id) {
 		if(counter_m > 25) {
 			stopTimer('match');
 			alert("Congratulations you got '" + (25 - incorrect_answers_m) + "' correct answers and '" + incorrect_answers_m + "' incorrect answers in '" + (timer_m/1000) + "' seconds.");
+			$("#match_time").val(timer_m/1000);
+			$("#match_correct").val(25 - incorrect_answers_m);
 			resetExperiment();
 			return;
 		}

@@ -58,5 +58,13 @@
         </div>
       </div>
 	  </div>
+
+	  <form action="/ending" id="form" method="post">
+	  	<input type="hidden" id = "match_time" name="match_time">
+	  	<input type="hidden" id = "match_correct" name="match_correct">
+	  	<input type="hidden" id = "mismatch_time" name="mismatch_time">
+	  	<input type="hidden" id = "mismatch_correct" name="mismatch_correct">
+	  	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	  </form>
 </div>
 </div>

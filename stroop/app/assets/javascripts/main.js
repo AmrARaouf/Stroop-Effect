@@ -28,6 +28,7 @@ function startExperiment() {
 	else {
 		startTimer('mismatch');
 	}
+	$("#box3").css('display', 'initial');
 	randomizeColour();
 }
 function randomizeColour(clicked_id) {
@@ -162,8 +163,17 @@ function startCountDown() {
 }
 
 function resetExperiment() {
+	$("#box3").animate({
+		left: '-100%'
+		}, 500, function() {
+			$(this).css('left', '150%');
+			$(this).css('display', 'none');
+	});
 	initialize = true;
 	match = false;
 	$("#count-down").text('3');
+	$("#box3").animate({
+		left: '0%'
+	}, 500);
 	startCountDown();
 }

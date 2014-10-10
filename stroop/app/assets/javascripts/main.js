@@ -12,6 +12,7 @@ var incorrect_answers_m = 0;
 var incorrect_answers_mm = 0;
 var initialize = true;
 var match = true;
+var oldIdx1;
 
 $(document).ready(function(){
 	$("#count-down").fadeOut(1);
@@ -50,6 +51,10 @@ function randomizeColour(clicked_id) {
 		}
 		var ctext = document.getElementById('colourName');
 		var idx1 = getRandomInt(0,codes.length - 1);
+		while(idx1 == oldIdx1) {
+			var idx1 = getRandomInt(0,codes.length - 1);
+			oldIdx1 = idx1;
+		}
 		var idx2 = idx1;
 		while (idx2 == idx1) {
 			idx2 = getRandomInt(0,colours.length - 1);
@@ -77,6 +82,10 @@ function randomizeColour(clicked_id) {
 		}
 		var ctext = document.getElementById('colourName');
 		var idx1 = getRandomInt(0,codes.length - 1);
+		while(idx1 == oldIdx1) {
+			var idx1 = getRandomInt(0,codes.length - 1);
+			oldIdx1 = idx1;
+		}
 		var idx2 = idx1;
 		while (idx2 == idx1) {
 			idx2 = getRandomInt(0,colours.length - 1);
@@ -117,13 +126,13 @@ function startTimer(type) {
 	if(type == 'match') {
 			timer_timeout_m = setInterval(function(){
 			timer_m += 100;	
-			console.log(timer_m / 1000);
+			// console.log(timer_m / 1000);
 		}, 100);
 	}
 	else {
 		timer_timeout_mm = setInterval(function(){
 			timer_mm += 100;	
-			console.log(timer_mm / 1000);
+			// console.log(timer_mm / 1000);
 		}, 100);
 	}
 }

@@ -122,3 +122,10 @@ button {
   text-shadow: 14px 1px 57px #000;
   z-index: 1;
 }
+
+.ending-header {
+  font-size: 75px;
+  line-height: 1;
+  text-align: center;
+  color: #2b9ab6;
+}
